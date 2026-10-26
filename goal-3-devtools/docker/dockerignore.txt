@@ -1,0 +1,11 @@
+node_modules
+.next
+.open-next
+.git
+.github
+.claude
+.superpowers
+test-results
+docs
+*.md
+.env*

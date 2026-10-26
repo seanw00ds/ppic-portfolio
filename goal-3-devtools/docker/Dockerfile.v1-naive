@@ -1,0 +1,15 @@
+# Start from a box that already has Node installed
+FROM node:22
+
+# Work inside a folder called /app in the box
+WORKDIR /app
+
+# Copy everything from my project into the box
+COPY . .
+
+# Install packages and build the site
+RUN npm ci
+RUN npm run build
+
+# Start the site
+CMD ["npm", "start"]

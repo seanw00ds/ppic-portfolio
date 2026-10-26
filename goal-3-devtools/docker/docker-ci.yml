@@ -1,0 +1,41 @@
+name: Docker CI
+
+# Run on every push to the docker branch, and on pull requests into main
+on:
+  push:
+    branches: [docker]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Get the code onto GitHub's machine
+      - uses: actions/checkout@v4
+
+      # 2. Build the Docker image (this also runs the Next.js build and TypeScript check)
+      - name: Build image
+        run: docker build -t woods-site:ci .
+
+      # 3. Switch the container on
+      - name: Start container
+        run: docker run -d -p 3000:3000 --name site woods-site:ci
+
+      # 4. Smoke test: check the key pages actually load
+      - name: Smoke test
+        run: |
+          for i in $(seq 1 15); do
+            curl -sf http://localhost:3000 > /dev/null && break
+            sleep 1
+          done
+          for page in / /about /contact; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000$page)
+            echo "$page -> $code"
+            [ "$code" = "200" ] || exit 1
+          done
+
+      # 5. If anything failed, print the container logs so we can see why
+      - name: Show logs on failure
+        if: failure()
+        run: docker logs site
