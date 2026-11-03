@@ -23,3 +23,4 @@ Containers package an application with everything it needs to run.
 A pipeline builds and tests that container on every push, so a broken change never reaches production, and a failed run can be rolled back.
 
 $ git add goal-3-devtools/custom-action/data.txt && git commit
+327cbce Resolve merge conflict in data.txt, keep both changes
