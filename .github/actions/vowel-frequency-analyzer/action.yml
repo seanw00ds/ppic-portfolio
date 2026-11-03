@@ -1,0 +1,24 @@
+name: Vowel frequency analyzer
+description: Counts vowels in a text file and writes the result, contributor and timestamp to a markdown file
+inputs:
+  file:
+    description: Text file to analyse
+    required: true
+    default: goal-3-devtools/custom-action/data.txt
+  results:
+    description: Markdown file the results are written to
+    required: true
+    default: goal-3-devtools/custom-action/RESULTS.md
+  username:
+    description: GitHub user who triggered the run
+    required: true
+outputs:
+  total:
+    description: Total number of vowels found
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.file }}
+    - ${{ inputs.results }}
+    - ${{ inputs.username }}

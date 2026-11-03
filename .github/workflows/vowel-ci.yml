@@ -1,0 +1,30 @@
+name: Vowel frequency CI
+
+on:
+  push:
+    paths:
+      - goal-3-devtools/custom-action/data.txt
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  analyse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run custom action
+        id: vowels
+        uses: ./.github/actions/vowel-frequency-analyzer
+        with:
+          username: ${{ github.actor }}
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add goal-3-devtools/custom-action/RESULTS.md
+          git commit -m "Update vowel results (${{ steps.vowels.outputs.total }} vowels)" || echo "No change"
+          git push
