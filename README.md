@@ -9,3 +9,5 @@ This repo is the portfolio for my Professional Learning Report (Assessment Task 
 | 1. Ethical principles and practice, especially with Indigenous communities | 2 | [goal-1-ethics](goal-1-ethics/) |
 | 2. Foundational cybersecurity | 2 | [goal-2-cybersecurity](goal-2-cybersecurity/) |
 | 3. Software development tools (Git, GitHub Actions, Docker) | 2 | [goal-3-devtools](goal-3-devtools/) |
+
+Task board: [PPIC portfolio board](https://github.com/users/seanw00ds/projects/1)
