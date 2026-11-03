@@ -53,3 +53,6 @@ The module's vowel frequency scenario, built as a Docker container action in [`.
 - Merged through PR #2, which closed issue #1 automatically ([screenshot](evidence/pr-merged-closes-issue.jpg)).
 
 Staged on my own repo, so this covers the mechanics and not the part where you agree a resolution with someone else.
+
+## GitHub Projects board (Topic 4)
+[PPIC portfolio board](https://github.com/users/seanw00ds/projects/1) tracks the work in this repo as issues on a Todo / In Progress / Done board. The project's built-in workflows are on, so closing an issue or merging a PR that references it moves the card to Done without touching the board. This section was added in a PR that closed issue #5, which is how its card moved.
