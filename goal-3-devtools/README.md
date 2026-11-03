@@ -43,3 +43,13 @@ To prove the pipeline catches problems, I pushed a deliberate type error first:
 - **Run #2 passed** after I reverted the error. All three pages returned 200.
 
 Both runs: [screenshot](evidence/ci-red-then-green-runs.jpg) · [live run history](https://github.com/mwoods-1/woods-websites/actions/workflows/docker-ci.yml)
+
+## Custom GitHub Action (Topic 3)
+The module's vowel frequency scenario, built as a Docker container action in [`.github/actions/vowel-frequency-analyzer`](../.github/actions/vowel-frequency-analyzer). [`vowel-ci.yml`](../.github/workflows/vowel-ci.yml) runs it whenever `custom-action/data.txt` changes, then commits [`RESULTS.md`](custom-action/RESULTS.md) back to the repo. First run: [green in 13 s](evidence/custom-action-run-green.jpg).
+
+## Conflict resolution and team workflow (Topics 1 and 4)
+- Opened issue #1, did the work on `feature/data-rollback`, and changed the same line on `main` to force a conflict.
+- Resolved it by combining both edits. The full terminal output is in [conflict-log.txt](conflict-log.txt).
+- Merged through PR #2, which closed issue #1 automatically ([screenshot](evidence/pr-merged-closes-issue.jpg)).
+
+Staged on my own repo, so this covers the mechanics and not the part where you agree a resolution with someone else.
