@@ -1,2 +1,2 @@
 Containers package an application with everything it needs to run.
-A pipeline builds and tests that container on every push, so mistakes show up before a client sees them.
+A pipeline builds and tests that container on every push, so a broken change never reaches production.
