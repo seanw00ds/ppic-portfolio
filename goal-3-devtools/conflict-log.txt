@@ -1,0 +1,26 @@
+# Merge conflict, resolved 3 Nov 2026
+# Branch feature/data-rollback and main both edited line 2 of data.txt (issue #1).
+
+$ git merge main
+Auto-merging goal-3-devtools/custom-action/data.txt
+CONFLICT (content): Merge conflict in goal-3-devtools/custom-action/data.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+$ git status --short
+UU goal-3-devtools/custom-action/data.txt
+
+$ cat goal-3-devtools/custom-action/data.txt
+Containers package an application with everything it needs to run.
+<<<<<<< HEAD
+A pipeline builds and tests that container on every push, and a failed run blocks the deploy so it can be rolled back.
+=======
+A pipeline builds and tests that container on every push, so a broken change never reaches production.
+>>>>>>> main
+
+# Resolution: kept both ideas in one sentence, removed the markers
+$ cat goal-3-devtools/custom-action/data.txt
+Containers package an application with everything it needs to run.
+A pipeline builds and tests that container on every push, so a broken change never reaches production, and a failed run can be rolled back.
+
+$ git add goal-3-devtools/custom-action/data.txt && git commit
+327cbce Resolve merge conflict in data.txt, keep both changes
